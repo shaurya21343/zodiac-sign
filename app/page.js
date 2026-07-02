@@ -65,13 +65,13 @@ export default function ZodiacWebsite() {
       <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-slate-900/50 p-8 rounded-3xl border border-slate-800 backdrop-blur-sm shadow-2xl">
         
         {/* Left Side: Input Form & Results */}
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           <div>
             <div className="flex items-center gap-3 text-indigo-400 mb-2">
               <Compass className="w-6 h-6 animate-pulse" />
               <span className="text-sm font-semibold tracking-widest uppercase">Zodiac Explorer</span>
             </div>
-            <h1 className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
               Discover Your Sign
             </h1>
             <p className="text-slate-400 mt-2 text-sm">
@@ -89,19 +89,19 @@ export default function ZodiacWebsite() {
                 type="date"
                 value={dob}
                 onChange={(e) => setDob(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-slate-950/80 border border-slate-800 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all shadow-inner [color-scheme:dark]"
+                className="w-full pl-12 pr-4 py-3 bg-slate-950/80 border border-slate-800 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all shadow-inner scheme-dark"
               />
             </div>
           </div>
 
           {/* Dynamic Result Panel */}
-          <div className="min-h-[140px] flex items-center">
+          <div className="min-h-[120px] sm:min-h-[140px] flex items-center">
             {zodiac ? (
-              <div className="w-full p-6 bg-gradient-to-br from-indigo-950/40 to-slate-900 border border-indigo-500/20 rounded-2xl animate-fade-in">
+              <div className="w-full p-5 sm:p-6 bg-gradient-to-br from-indigo-950/40 to-slate-900 border border-indigo-500/20 rounded-2xl animate-fade-in">
                 <div className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-3">Your Sign</div>
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-4">
-                    <span className="text-5xl drop-shadow-md" role="img" aria-label={zodiac.name}>{zodiac.icon}</span>
+                    <span className="text-4xl sm:text-5xl drop-shadow-md" role="img" aria-label={zodiac.name}>{zodiac.icon}</span>
                     <div>
                       <h2 className="text-3xl font-bold text-white tracking-wide">{zodiac.name}</h2>
                       <span className="inline-block mt-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
@@ -126,7 +126,7 @@ export default function ZodiacWebsite() {
         <div className="flex flex-col items-center justify-center relative">
           {/* Arrow element successfully removed from here */}
           
-          <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-full border-4 border-slate-800/80 bg-slate-950 shadow-[0_0_50px_rgba(99,102,241,0.15)] flex items-center justify-center overflow-hidden">
+          <div className="relative w-full max-w-[18rem] h-[18rem] sm:max-w-[20rem] sm:h-[20rem] rounded-full border-4 border-slate-800/80 bg-slate-950 shadow-[0_0_50px_rgba(99,102,241,0.15)] flex items-center justify-center overflow-hidden">
             <svg
               viewBox="0 0 200 200"
               className="w-full h-full transform transition-transform duration-[2500ms] ease-[cubic-bezier(0.25,1,0.5,1)]"
