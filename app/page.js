@@ -62,10 +62,11 @@ export default function ZodiacWebsite() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center justify-center p-6 selection:bg-indigo-500 selection:text-white">
-      <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-slate-900/50 p-8 rounded-3xl border border-slate-800 backdrop-blur-sm shadow-2xl">
+      {/* Added relative positioning context to the card container */}
+      <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-slate-900/50 p-8 pt-14 md:pt-12 rounded-3xl border border-slate-800 backdrop-blur-sm shadow-2xl relative">
         
-        {/* Built By */}
-        <div className="absolute top-4 right-4 text-xs text-slate-500">
+        {/* Built By - Responsive Fix applied here */}
+        <div className="ml-4 mb-4  absolute top-4 left-4 right-4 md:left-auto md:right-6 text-[10px] md:text-xs text-slate-500 text-center md:text-right max-w-full leading-relaxed">
           Built by: Shaurya Singh, Anirudh Gupta, Dev Pratap Singh, Siddhant Tripathi, Aanan Kumar Aggarwal
         </div>
 
@@ -129,8 +130,6 @@ export default function ZodiacWebsite() {
 
         {/* Right Side: Interactive Spinning Wheel Component */}
         <div className="flex flex-col items-center justify-center relative">
-          {/* Arrow element successfully removed from here */}
-          
           <div className="relative w-full max-w-[18rem] h-[18rem] sm:max-w-[20rem] sm:h-[20rem] rounded-full border-4 border-slate-800/80 bg-slate-950 shadow-[0_0_50px_rgba(99,102,241,0.15)] flex items-center justify-center overflow-hidden">
             <svg
               viewBox="0 0 200 200"
@@ -140,18 +139,16 @@ export default function ZodiacWebsite() {
               {/* Slices Rendering */}
               {ZODIAC_DATA.map((sign, index) => {
                 const angleStep = 30;
-                const startAngle = index * angleStep - 15; // Centering individual slice alignment
+                const startAngle = index * angleStep - 15; 
                 const endAngle = startAngle + angleStep;
                 const radStart = (Math.PI * startAngle) / 180;
                 const radEnd = (Math.PI * endAngle) / 180;
                 
-                // Fixed SSR hydration mismatch by fixing to 3 decimal places
                 const x1 = (100 + 90 * Math.cos(radStart)).toFixed(3);
                 const y1 = (100 + 90 * Math.sin(radStart)).toFixed(3);
                 const x2 = (100 + 90 * Math.cos(radEnd)).toFixed(3);
                 const y2 = (100 + 90 * Math.sin(radEnd)).toFixed(3);
 
-                // Label positions for inside vectors
                 const textAngle = index * angleStep;
                 const textRad = (Math.PI * textAngle) / 180;
                 const tx = (100 + 65 * Math.cos(textRad)).toFixed(3);
@@ -161,7 +158,6 @@ export default function ZodiacWebsite() {
 
                 return (
                   <g key={sign.id}>
-                    {/* Visual Segment Paths */}
                     <path
                       d={`M 100 100 L ${x1} ${y1} A 90 90 0 0 1 ${x2} ${y2} Z`}
                       fill={isCurrent ? '#1e1b4b' : '#020617'}
@@ -169,7 +165,6 @@ export default function ZodiacWebsite() {
                       strokeWidth={isCurrent ? '1.5' : '0.5'}
                       className="transition-colors duration-500"
                     />
-                    {/* Glyphs Injection */}
                     <text
                       x={tx}
                       y={ty}
@@ -185,11 +180,9 @@ export default function ZodiacWebsite() {
                   </g>
                 );
               })}
-              {/* Inner Decorative Accent Ring */}
               <circle cx="100" cy="100" r="40" fill="#090d16" stroke="#1e293b" strokeWidth="1" />
             </svg>
             
-            {/* Core Center Badge */}
             <div className="absolute w-16 h-16 rounded-full bg-slate-900 border-2 border-slate-800 flex items-center justify-center text-xl font-bold text-indigo-400 shadow-xl backdrop-blur-md transition-all duration-500">
               {zodiac ? zodiac.icon : '✨'}
             </div>
