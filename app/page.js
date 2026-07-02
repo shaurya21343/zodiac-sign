@@ -64,6 +64,11 @@ export default function ZodiacWebsite() {
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center justify-center p-6 selection:bg-indigo-500 selection:text-white">
       <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-slate-900/50 p-8 rounded-3xl border border-slate-800 backdrop-blur-sm shadow-2xl">
         
+        {/* Built By */}
+        <div className="absolute top-4 right-4 text-xs text-slate-500">
+          Built by: Shaurya Singh, Anirudh Gupta, Dev Pratap Singh, Siddhant Tripathi, Aanan Kumar Aggarwal
+        </div>
+
         {/* Left Side: Input Form & Results */}
         <div className="space-y-6 sm:space-y-8">
           <div>
